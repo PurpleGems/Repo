@@ -58,6 +58,7 @@
     <Compile Include="Scripts\Graphics\ParticleEmitter.cs" />
     <Compile Include="Scripts\Helper.cs" />
     <Compile Include="Scripts\HoedDirt.cs" />
+    <Compile Include="Scripts\Items\Crops\Crop.cs" />
     <Compile Include="Scripts\Items\Item.cs" />
     <Compile Include="Scripts\Items\TestSeed.cs" />
     <Compile Include="Scripts\Items\Tools\Hoe.cs" />

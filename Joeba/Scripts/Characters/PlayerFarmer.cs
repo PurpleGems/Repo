@@ -10,6 +10,7 @@ using Nez.Textures;
 using System.Collections.Generic;
 using Joeba.Scripts.Components;
 using Joeba.Scripts.Graphics;
+using Joeba.Scripts.Items.Crops;
 using Joeba.Scripts.Items.Tools;
 
 
@@ -133,7 +134,20 @@ namespace Joeba.Scripts.Characters
         Animations anim = Animations.WalkSouth;
         public void update()
         {
-
+            if (Input.isKeyPressed(Keys.P))
+            {
+                Vector2 mousePosition = Input.MousePositionInGridTile();
+                if (Game1.HoedSpots.ContainsKey(mousePosition))
+                {
+                    if (Game1.HoedSpots[mousePosition].getComponent<HoedDirt>().CanPlantSeed())
+                    {
+                        Game1.HoedSpots[mousePosition].getComponent<HoedDirt>().PlantSeed((int)mousePosition.X, (int)mousePosition.Y, new Crop(0, 5));
+                    }
+                    else {
+                        Console.WriteLine( "SEED ALREADY PLANTED HERE");
+                    }
+                }
+            }
 
             var moveDirection = new Vector2(xAxisInput.value, yAxisInput.value);
            

@@ -44,41 +44,35 @@ namespace Joeba.Scripts.Components
                 currentSeed = 2;
         }
 
-        private void HoeDirt()
-        {
-            if (Input.leftMouseButtonPressed)
-            {
-                
-            }
-        }
 
-        private void CreatePlantSeed()
-        {
-            if (Input.leftMouseButtonPressed)
-            {
-                string value = "";
 
-                if (Helper.DoesTileHaveProperty((int)Input.MousePositionInGridTile().X,(int)Input.MousePositionInGridTile().Y,"Diggable","Back"))
-                {
-                    Entity tempPlant = entity.scene.createEntity("Seedling");
-                    switch (currentSeed)
-                    {
-                    case 0:
-                        tempPlant.addComponent(new TestSeed(56, 6));
-                        break;
-                    case 1:
-                        tempPlant.addComponent(new TestSeed(0, 5));
-                        break;
-                    case 2:
-                        tempPlant.addComponent(new TestSeed(72, 6));
-                        break;
-                    }
-
-                   tempPlant.addComponent(new GridSnap((int)Input.MousePositionInGridTile().X,(int) Input.MousePositionInGridTile().Y, new Vector2(0,16)));
-                   tempPlant.addComponent(new MovementShake());
-                }
-            }
-        }
+//        private void CreatePlantSeed()
+//        {
+//            if (Input.leftMouseButtonPressed)
+//            {
+//                string value = "";
+//
+//                if (Helper.DoesTileHaveProperty((int)Input.MousePositionInGridTile().X,(int)Input.MousePositionInGridTile().Y,"Diggable","Back"))
+//                {
+//                    Entity tempPlant = entity.scene.createEntity("Seedling");
+//                    switch (currentSeed)
+//                    {
+//                    case 0:
+//                        tempPlant.addComponent(new TestSeed(56, 6));
+//                        break;
+//                    case 1:
+//                        tempPlant.addComponent(new TestSeed(0, 5));
+//                        break;
+//                    case 2:
+//                        tempPlant.addComponent(new TestSeed(72, 6));
+//                        break;
+//                    }
+//
+//                   tempPlant.addComponent(new GridSnap((int)Input.MousePositionInGridTile().X,(int) Input.MousePositionInGridTile().Y, new Vector2(0,16)));
+//                   tempPlant.addComponent(new MovementShake());
+//                }
+//            }
+//        }
 
 
     }

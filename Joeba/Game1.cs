@@ -49,7 +49,7 @@ namespace Joeba
             //Texture2D catfish = Content.Load<Texture2D>("Particles/treeleaf");
             Texture2D mousegrdtxr = Content.Load<Texture2D>("mousegridtxr");
             var testScene = Scene.createWithDefaultRenderer(Color.Purple);
-            testScene.camera.setZoom(1);
+            testScene.camera.setZoom(1.5f);
 //            var defRenderer = testScene.addRenderer(new DeferredLightingRenderer(1000, LIGHT_LAYER, new int[] { RENDERABLES_LAYER, -100, 100 }));
             
 

@@ -47,7 +47,7 @@ namespace Joeba.Scripts.Components
                 sprite.setRenderLayer((int)Game1.Layers.PlayerLayer);
 
             
-                entity.setPosition(new Vector2((int)positionInGrid.X * 16, (int)positionInGrid.Y * 16));
+                entity.setPosition(new Vector2((int)positionInGrid.X * Game1.TileSize, (int)positionInGrid.Y * Game1.TileSize));
                 Console.WriteLine(entity.position);
             
 

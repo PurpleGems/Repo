@@ -387,7 +387,7 @@ namespace Nez
 		/// <param name="zoom">Zoom.</param>
 		public Camera setZoom( float zoom )
 		{
-			var newZoom = Mathf.clamp( zoom, -1, 1 );
+			var newZoom = Mathf.clamp( zoom, -1, 4 );
 			if( newZoom == 0 )
 				_zoom = 1f;
 			else if( newZoom < 0 )
