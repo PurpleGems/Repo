@@ -11,32 +11,31 @@ namespace Joeba.Scripts.Components
     class GridSnap : Component
     {
         private new Vector2 originOffset;
+        private new Vector2 positionInGrid;
         private Sprite sprite;
         private bool changeRenderLayer = false;
-        private bool bMouseSnap = false;
 
-        public GridSnap()
+        public GridSnap(int xPosition, int yPosition)
         {
+            positionInGrid = new Vector2(xPosition, yPosition);
             originOffset = Vector2.Zero;
             changeRenderLayer = true;
-            bMouseSnap = true;
         }
 
-        public GridSnap(Vector2 OriginOffset) : this()
+        public GridSnap(int xPosition, int yPosition, Vector2 OriginOffset) : this(xPosition,yPosition)
         {          
             this.originOffset = OriginOffset;
         }
 
-        public GridSnap(bool ChangeRenderLayer) : this (ChangeRenderLayer, true)
-        {
 
-        }
-
-        public GridSnap(bool ChangeRenderLayer, bool mouseSnap)
+        public GridSnap(int xPosition, int yPosition,bool ChangeRenderLayer) : this(xPosition,yPosition)
         {
             changeRenderLayer = ChangeRenderLayer;
-            bMouseSnap = mouseSnap;
         }
+
+        
+
+
 
         public override void onAddedToEntity()
         {
@@ -47,14 +46,10 @@ namespace Joeba.Scripts.Components
             if (changeRenderLayer)
                 sprite.setRenderLayer((int)Game1.Layers.PlayerLayer);
 
-            if(bMouseSnap)
-                entity.setPosition(Input.MousePositionInGrid());
-            else
-            {
-                entity.setPosition(Helper.GetGridPosition(new Vector2(entity.position.X, entity.position.Y)));
+            
+                entity.setPosition(new Vector2((int)positionInGrid.X * 16, (int)positionInGrid.Y * 16));
                 Console.WriteLine(entity.position);
-
-            }
+            
 
             float inversedDepth = 1 - (entity.position.Y / 100000);
             sprite.setLayerDepth(inversedDepth);

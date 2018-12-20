@@ -1,4 +1,5 @@
-﻿using Nez;
+﻿using Microsoft.Xna.Framework;
+using Nez;
 using Nez.Sprites;
 using System;
 using System.Collections.Generic;
@@ -19,15 +20,15 @@ namespace Joeba.Scripts.Items.Tools
         public override void OnLeftClick()
         {
             string value = "";
-
-            if (Helper.DoesTileHaveProperty((int)Input.MousePositionInGridTile().X, (int)Input.MousePositionInGridTile().Y, "Diggable", "Back") && !
-                    Game1.HoedSpots.ContainsKey(Input.MousePositionInGridTile()))
+            Vector2 clickedPosition = Input.MousePositionInGridTile();
+            if (Helper.DoesTileHaveProperty((int)clickedPosition.X,(int)clickedPosition.Y, "Diggable", "Back") && !
+                    Game1.HoedSpots.ContainsKey(clickedPosition))
             {
 
                 Entity HoeDirt = Core.scene.createEntity("HoedDirt");
-                HoeDirt.addComponent(new HoedDirt());
-                Game1.HoedSpots.Add(Input.MousePositionInGridTile(), HoeDirt);
-                Console.WriteLine(Input.MousePositionInGridTile());
+                HoeDirt.addComponent(new HoedDirt(new Vector2((int)clickedPosition.X,(int)clickedPosition.Y)));
+                Game1.HoedSpots.Add(new Vector2((int)clickedPosition.X, (int)clickedPosition.Y), HoeDirt);
+                Console.WriteLine(clickedPosition);
             }
             else
             {

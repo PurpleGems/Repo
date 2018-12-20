@@ -100,10 +100,7 @@ namespace Joeba
 //            .setRenderLayer(LIGHT_LAYER);
             
 
-            //HOED DIRT ENTITY
-            Entity dirt = testScene.createEntity("HoedDirt");
-            dirt.addComponent(new HoedDirt());
-            dirt.setPosition(new Vector2(40 * 23, 38 * 13));
+            
 
           
 

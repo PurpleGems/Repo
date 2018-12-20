@@ -74,7 +74,7 @@ namespace Joeba.Scripts.Components
                         break;
                     }
 
-                   tempPlant.addComponent(new GridSnap(new Vector2(0,16)));
+                   tempPlant.addComponent(new GridSnap((int)Input.MousePositionInGridTile().X,(int) Input.MousePositionInGridTile().Y, new Vector2(0,16)));
                    tempPlant.addComponent(new MovementShake());
                 }
             }

@@ -135,7 +135,6 @@
     <Folder Include="Content\nez\" />
     <Folder Include="Content\Particles\" />
     <Folder Include="Content\Player\" />
-    <Folder Include="Content\Terrain\Crops\" />
     <Folder Include="Scripts\Characters\Monsters\" />
     <Folder Include="Scripts\Characters\NPC\" />
   </ItemGroup>
@@ -143,6 +142,8 @@
     <Content Include="Content\Items\Weapons.png" />
     <Content Include="Content\Maps\OutdoorSpring.png" />
     <Content Include="Content\mousegridtxr.png" />
+    <Content Include="Content\Terrain\Crops\crops.png" />
+    <Content Include="Content\Terrain\Crops\hoeDirt.png" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\Maps\OutdoorSpring.tsx" />
