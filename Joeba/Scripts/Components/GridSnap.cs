@@ -48,7 +48,6 @@ namespace Joeba.Scripts.Components
 
             
                 entity.setPosition(new Vector2((int)positionInGrid.X * Game1.TileSize, (int)positionInGrid.Y * Game1.TileSize));
-                Console.WriteLine(entity.position);
             
 
             float inversedDepth = 1 - (entity.position.Y / 100000);

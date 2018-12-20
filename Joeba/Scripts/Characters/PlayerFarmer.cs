@@ -141,12 +141,13 @@ namespace Joeba.Scripts.Characters
                 {
                     if (Game1.HoedSpots[mousePosition].getComponent<HoedDirt>().CanPlantSeed())
                     {
-                        Game1.HoedSpots[mousePosition].getComponent<HoedDirt>().PlantSeed((int)mousePosition.X, (int)mousePosition.Y, new Crop(0, 5));
+                        Game1.HoedSpots[mousePosition].getComponent<HoedDirt>().PlantSeed((int)mousePosition.X, (int)mousePosition.Y, new Crop(0, 6));
                     }
                     else {
-                        Console.WriteLine( "SEED ALREADY PLANTED HERE");
+                        Debug.log( "SEED ALREADY PLANTED HERE");
                     }
                 }
+                else { Debug.log("cant plant a seed here, tile hasnt been dug up.");}
             }
 
             var moveDirection = new Vector2(xAxisInput.value, yAxisInput.value);

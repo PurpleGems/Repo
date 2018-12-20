@@ -12,11 +12,17 @@ using Nez.Sprites;
 
 namespace Joeba.Scripts
 {
+    /// <summary>
+    /// When added onto an entity it allows for a crop/seed to be planted in
+    /// </summary>
     class HoedDirt : Component
     {
         private Vector2 dirtPosition;
         private Entity crop;
+        private Sprite spr;
         private bool cropInitalized = false;
+        private bool isWatered = false;
+
         public HoedDirt(Vector2 position)
         {
             dirtPosition = position;
@@ -25,11 +31,19 @@ namespace Joeba.Scripts
         public override void onAddedToEntity()
         {
             crop = Core.scene.createEntity("Crop");
-            var spr = entity.addComponent(new Sprite(GlobalSpritesheets.HoedDirtSplit[0]));
+            spr = entity.addComponent(new Sprite(GlobalSpritesheets.HoedDirtSplit[0]));
             spr.setRenderLayer(88);
             entity.addComponent(new GridSnap((int) dirtPosition.X,(int)dirtPosition.Y,false));
         }
 
+        public void WaterPlant()
+        {
+            if (!isWatered)
+            {
+                isWatered = true;
+                spr.setSubtexture(GlobalSpritesheets.HoedDirtSplit[4]);
+            }
+        }
 
         public bool CanPlantSeed()
         {
@@ -41,7 +55,6 @@ namespace Joeba.Scripts
             cropInitalized = true;
             this.crop.addComponent(crops);
             crop.addComponent(new GridSnap(xTile, yTile,new Vector2(0,16)));
-           
         }
 
 

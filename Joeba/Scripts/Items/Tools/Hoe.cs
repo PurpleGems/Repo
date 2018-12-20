@@ -24,15 +24,17 @@ namespace Joeba.Scripts.Items.Tools
             if (Helper.DoesTileHaveProperty((int)clickedPosition.X,(int)clickedPosition.Y, "Diggable", "Back") && !
                     Game1.HoedSpots.ContainsKey(clickedPosition))
             {
-
+                
                 Entity HoeDirt = Core.scene.createEntity("HoedDirt");
                 HoeDirt.addComponent(new HoedDirt(new Vector2((int)clickedPosition.X,(int)clickedPosition.Y)));
+
+                //TODO in the future when more scenes are added each scene will have to hold its own HoedSpots dictionary so when saving and loading
+                //each scene will be able to hold data of where stuff was planted etc.
                 Game1.HoedSpots.Add(new Vector2((int)clickedPosition.X, (int)clickedPosition.Y), HoeDirt);
-                Console.WriteLine(clickedPosition);
             }
             else
             {
-                Console.WriteLine("THIS GROUND IS ALREADY DUG");
+                Debug.log("THIS GROUND IS ALREADY DUG");
             }
 
         }

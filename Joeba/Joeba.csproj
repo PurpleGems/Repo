@@ -62,6 +62,7 @@
     <Compile Include="Scripts\Items\Item.cs" />
     <Compile Include="Scripts\Items\TestSeed.cs" />
     <Compile Include="Scripts\Items\Tools\Hoe.cs" />
+    <Compile Include="Scripts\Items\Tools\WateringCan.cs" />
     <Compile Include="Scripts\Items\Weapons\Weapon.cs" />
     <Compile Include="Scripts\Items\Weapons\WoodenSword.cs" />
   </ItemGroup>

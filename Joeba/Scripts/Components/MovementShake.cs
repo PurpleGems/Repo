@@ -14,7 +14,11 @@ namespace Joeba.Scripts.Components
     class MovementShake : Component, IUpdatable
     {
         private bool bIsShaking = false;
-        private int rotationVelocity = 80;
+
+        //how fast the shake is
+        private int rotationVelocity = 40;
+
+        private int rotationAmount = 12;
         //when this is added to an entity if something collides with it it will do a "shake" will move 20 degrees on direction and go back to 0
 
 
@@ -28,10 +32,10 @@ namespace Joeba.Scripts.Components
             if (bIsShaking == true)
             {
                 entity.rotationDegrees += Time.deltaTime * rotationVelocity;
-                if (entity.rotationDegrees > 20)
+                if (entity.rotationDegrees > rotationAmount)
                 {
                     rotationVelocity *= -1;
-                    entity.rotationDegrees = 20;
+                    entity.rotationDegrees = rotationAmount;
                 }
 
                 if (entity.rotationDegrees < 0)

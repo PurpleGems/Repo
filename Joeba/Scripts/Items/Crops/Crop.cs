@@ -14,7 +14,6 @@ namespace Joeba.Scripts.Items.Crops
 {
     class Crop : Component, IUpdatable
     {
-        //CROP IS LEGIT TEST SEED?
         private Sprite seedSprite;
         private int nGrowthStages;
         private int currentGrowthStage = 0;
