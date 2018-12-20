@@ -46,7 +46,7 @@ namespace Joeba
             
 
 
-            Texture2D catfish = Content.Load<Texture2D>("Particles/treeleaf");
+            //Texture2D catfish = Content.Load<Texture2D>("Particles/treeleaf");
             Texture2D mousegrdtxr = Content.Load<Texture2D>("mousegridtxr");
             var testScene = Scene.createWithDefaultRenderer(Color.Purple);
             testScene.camera.setZoom(1);
@@ -54,7 +54,7 @@ namespace Joeba
             
 
             //Tilemap!
-            CurrentMap = content.Load<TiledMap>("Maps/Town");
+            CurrentMap = content.Load<TiledMap>("Maps/untitled");
 
 
             Entity tilemapEnt = testScene.createEntity("tilemap_Town");
@@ -80,9 +80,9 @@ namespace Joeba
 
 
 
-
-            Entity particleEmitter = testScene.createEntity("ParticleEmitter");
-            particleEmitter.addComponent(new ParticleEmitter(new Vector2(250, 250), catfish, new Vector2(Nez.Random.nextFloat() * (0.60f - -0.60f) + -0.60f, -6), new Vector2(0, Nez.Random.nextFloat() * (0.20f - 0.10f) + 0.10f)));
+            //PARTICLE STUFF NULL RN
+//            Entity particleEmitter = testScene.createEntity("ParticleEmitter");
+//            particleEmitter.addComponent(new ParticleEmitter(new Vector2(250, 250), catfish, new Vector2(Nez.Random.nextFloat() * (0.60f - -0.60f) + -0.60f, -6), new Vector2(0, Nez.Random.nextFloat() * (0.20f - 0.10f) + 0.10f)));
 
             Entity mouseFollowEntity = testScene.createEntity("MouseCursor");
             mouseFollowEntity.addComponent(new MouseFollow());
@@ -92,7 +92,7 @@ namespace Joeba
 
 
 
-            PlayerEntity = testScene.createEntity("Player", new Vector2(40*16, 38*16));
+            PlayerEntity = testScene.createEntity("Player", new Vector2(15*16, 15*16));
             PlayerEntity.addComponent(new PlayerFarmer());
             
             

@@ -122,7 +122,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.manifest" />
-    <None Include="Content\Maps\Town.tmx" />
+    <None Include="Content\Maps\untitled.tmx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nez.Portable\Nez.csproj">
@@ -131,27 +131,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Characters\Player\" />
     <Folder Include="Content\nez\" />
-    <Folder Include="Content\Terrain\Trees\" />
+    <Folder Include="Content\Particles\" />
+    <Folder Include="Content\Player\" />
+    <Folder Include="Content\Terrain\Crops\" />
     <Folder Include="Scripts\Characters\Monsters\" />
     <Folder Include="Scripts\Characters\NPC\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Characters\Player\BaseMale.png" />
-    <Content Include="Content\Items\weapons.png" />
-    <Content Include="Content\Maps\paths.png" />
-    <Content Include="Content\Maps\spring_outdoorsTileSheet.png" />
-    <Content Include="Content\Maps\spring_town.png" />
+    <Content Include="Content\Items\Weapons.png" />
+    <Content Include="Content\Maps\OutdoorSpring.png" />
     <Content Include="Content\mousegridtxr.png" />
-    <Content Include="Content\Particles\treeleaf.png" />
-    <Content Include="Content\Particles\WoodChunk.png" />
-    <Content Include="Content\Terrain\Crops\crops.png" />
-    <Content Include="Content\Terrain\Crops\hoeDirt.png" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Content\Maps\Landscape.tsx" />
-    <TypeScriptCompile Include="Content\Maps\Paths.tsx" />
-    <TypeScriptCompile Include="Content\Maps\Town.tsx" />
+    <TypeScriptCompile Include="Content\Maps\OutdoorSpring.tsx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

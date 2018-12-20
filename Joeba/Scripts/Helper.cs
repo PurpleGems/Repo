@@ -9,7 +9,6 @@ using Nez.Tiled;
 
 namespace Joeba.Scripts
 {
-
     /// <summary>
     /// All around helper class for checking if tiles have properties and things of the sort.
     /// </summary>

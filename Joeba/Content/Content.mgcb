@@ -28,7 +28,7 @@
 /processorParam:TextureFormat=Color
 /build:Characters/Player/BaseMale.png
 
-#begin Items/weapons.png
+#begin Items/Weapons.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -38,9 +38,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Items/weapons.png
+/build:Items/Weapons.png
 
-#begin Maps/paths.png
+#begin Maps/OutdoorSpring.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -50,36 +50,12 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Maps/paths.png
+/build:Maps/OutdoorSpring.png
 
-#begin Maps/spring_outdoorsTileSheet.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Maps/spring_outdoorsTileSheet.png
-
-#begin Maps/spring_town.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Maps/spring_town.png
-
-#begin Maps/Town.tmx
+#begin Maps/untitled.tmx
 /importer:
 /processor:
-/build:Maps/Town.tmx
+/build:Maps/untitled.tmx
 
 #begin mousegridtxr.png
 /importer:TextureImporter
@@ -422,30 +398,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:nez/textures/textureWipeTransition/wink.png
-
-#begin Particles/treeleaf.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Particles/treeleaf.png
-
-#begin Particles/WoodChunk.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Particles/WoodChunk.png
 
 #begin Terrain/Crops/crops.png
 /importer:TextureImporter
