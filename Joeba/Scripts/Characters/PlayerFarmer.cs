@@ -10,6 +10,7 @@ using Nez.Textures;
 using System.Collections.Generic;
 using Joeba.Scripts.Components;
 using Joeba.Scripts.Graphics;
+using Joeba.Scripts.Graphics.GUI;
 using Joeba.Scripts.Items.Crops;
 using Joeba.Scripts.Items.Tools;
 
@@ -48,6 +49,7 @@ namespace Joeba.Scripts.Characters
         Item heldItem = new Hoe("Iridium Hoe", new Sprite(GlobalSpritesheets.WeaponsSplit[1]));
         Sprite<Animations> animations;
         Mover mover;
+        private InventoryBar inventoryBar;
 
         //Input Handling for this Player Component//
 
@@ -118,6 +120,13 @@ namespace Joeba.Scripts.Characters
 
 
             SetupInput();
+
+
+
+            //Inventory Stuff
+            inventoryBar = entity.addComponent(new InventoryBar());
+            
+
         }
 
         void SetupInput()
@@ -136,7 +145,7 @@ namespace Joeba.Scripts.Characters
         Animations anim = Animations.WalkSouth;
         public void update()
         {
-            
+            ChangingInventorySlots();
 
             if (Input.isKeyPressed(Keys.P))
             {
@@ -231,7 +240,25 @@ namespace Joeba.Scripts.Characters
             return false;
         }
 
-        
+        private void ChangingInventorySlots()
+        {
+            
+
+            if (Input.isKeyPressed(Keys.D1)) inventoryBar.CurrentlySelected = 0;
+            if (Input.isKeyPressed(Keys.D2)) inventoryBar.CurrentlySelected = 1;
+            if (Input.isKeyPressed(Keys.D3)) inventoryBar.CurrentlySelected = 2;
+            if (Input.isKeyPressed(Keys.D4)) inventoryBar.CurrentlySelected = 3;
+            if (Input.isKeyPressed(Keys.D5)) inventoryBar.CurrentlySelected = 4;
+            if (Input.isKeyPressed(Keys.D6)) inventoryBar.CurrentlySelected = 5;
+            if (Input.isKeyPressed(Keys.D7)) inventoryBar.CurrentlySelected = 6;
+            if (Input.isKeyPressed(Keys.D8)) inventoryBar.CurrentlySelected = 7;
+            if (Input.isKeyPressed(Keys.D9)) inventoryBar.CurrentlySelected = 8;
+            if (Input.isKeyPressed(Keys.D0)) inventoryBar.CurrentlySelected = 9;
+
+            if (Input.mouseWheelDelta < 0) inventoryBar.CurrentlySelected--;
+            if (Input.mouseWheelDelta > 0) inventoryBar.CurrentlySelected++;
+
+        }
 
         public void onTriggerEnter(Collider other, Collider local)
         {

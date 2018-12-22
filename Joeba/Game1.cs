@@ -5,11 +5,13 @@ using Joeba.Scripts;
 using Joeba.Scripts.Characters;
 using Joeba.Scripts.Components;
 using Joeba.Scripts.Graphics;
+using Joeba.Scripts.Graphics.GUI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;
 using Nez.Tiled;
+using Nez.UI;
 
 namespace Joeba
 {
@@ -36,7 +38,7 @@ namespace Joeba
         {
             Scene.setDefaultDesignResolution(WIDTH, HEIGHT, Scene.SceneResolutionPolicy.ShowAllPixelPerfect);
             defaultSamplerState = SamplerState.PointClamp;
-
+            
         }
 
         protected override void Initialize()
@@ -98,11 +100,14 @@ namespace Joeba
             
 //            PlayerEntity.addComponent(new PointLight(new Color(0.8f, 0.8f, 0.9f))).setRadius(100).setIntensity(1f)
 //            .setRenderLayer(LIGHT_LAYER);
-            
 
-            
 
-          
+            //Entity InventoryBar = testScene.createEntity("InventoryBarUI");
+            //InventoryBar.addComponent(new InventoryBar());
+
+
+
+
 
 
             Core.scene = testScene;

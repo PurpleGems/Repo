@@ -54,6 +54,7 @@
     <Compile Include="Scripts\Components\MovementShake.cs" />
     <Compile Include="Scripts\Components\Swipe.cs" />
     <Compile Include="Scripts\Graphics\GlobalSpritesheets.cs" />
+    <Compile Include="Scripts\Graphics\GUI\InventoryBar.cs" />
     <Compile Include="Scripts\Graphics\Particle.cs" />
     <Compile Include="Scripts\Graphics\ParticleEmitter.cs" />
     <Compile Include="Scripts\Helper.cs" />
