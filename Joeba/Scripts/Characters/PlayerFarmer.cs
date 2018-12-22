@@ -242,8 +242,6 @@ namespace Joeba.Scripts.Characters
 
         private void ChangingInventorySlots()
         {
-            
-
             if (Input.isKeyPressed(Keys.D1)) inventoryBar.CurrentlySelected = 0;
             if (Input.isKeyPressed(Keys.D2)) inventoryBar.CurrentlySelected = 1;
             if (Input.isKeyPressed(Keys.D3)) inventoryBar.CurrentlySelected = 2;
