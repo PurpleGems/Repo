@@ -50,7 +50,7 @@ namespace Joeba.Scripts.Components
                 entity.setPosition(new Vector2((int)positionInGrid.X * Game1.TileSize, (int)positionInGrid.Y * Game1.TileSize));
             
 
-            float inversedDepth = 1 - (entity.position.Y / 100000);
+            float inversedDepth = 1 - (entity.position.Y / 97000);
             sprite.setLayerDepth(inversedDepth);
         }
 

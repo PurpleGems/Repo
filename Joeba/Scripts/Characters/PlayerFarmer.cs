@@ -19,8 +19,9 @@ namespace Joeba.Scripts.Characters
 {
     class PlayerFarmer : Component, ITriggerListener, IUpdatable
     {
-        int move_speed = 75; // Used to be 50
-       
+        int move_speed = 50; // Used to be 50
+        private int anim_fps = 11;
+        private int originOffSetY = 28;
         
 
         public enum FacingDirection
@@ -33,21 +34,35 @@ namespace Joeba.Scripts.Characters
 
         public static FacingDirection Facing;
 
-        enum Animations
+        enum AnimationsBase
         {
             WalkNorth,
             WalkSouth,
             WalkWest,
             WalkEast,
-            Attack,
-            Water,
-            Hoe,
-            Forage
+        }
+
+        enum AnimationsLegs
+        {
+            WalkNorth,
+            WalkSouth,
+            WalkWest,
+            WalkEast,
+        }
+
+        enum AnimationsArms
+        {
+            WalkNorth,
+            WalkSouth,
+            WalkWest,
+            WalkEast,
         }
 
         //Components declaration for easy use in other parts of the class
         Item heldItem = new Hoe("Iridium Hoe", new Sprite(GlobalSpritesheets.WeaponsSplit[1]));
-        Sprite<Animations> animations;
+        Sprite<AnimationsBase> animationsBase;
+        Sprite<AnimationsLegs> animationsLegs;
+        Sprite<AnimationsArms> animationsArms;
         Mover mover;
         private InventoryBar inventoryBar;
 
@@ -62,13 +77,12 @@ namespace Joeba.Scripts.Characters
 
         public override void onAddedToEntity()
         {
-            //init animation stuff
-            var texture = entity.scene.content.Load<Texture2D>("Characters/Player/BaseMale");  // This is the spritesheet of our 
-            var textureSplit = Subtexture.subtexturesFromAtlas(texture, 16, 32); // This is the texture split up
+            var BaseTexture = GlobalSpritesheets.BaseCharacterSplit;
+            
             
             //size 10,8
             var col = entity.addComponent(new BoxCollider(10,8));
-            col.setLocalOffset(new Vector2(-3, 0));
+            
             var camera = entity.addComponent(new FollowCamera(entity, FollowCamera.CameraStyle.LockOn));
             camera.addComponent(new CameraBounds(new Vector2(0, 0), new Vector2(Game1.TileSize * (Game1.CurrentMap.width - 1), Game1.TileSize * (Game1.CurrentMap.height - 1))));
 
@@ -78,50 +92,94 @@ namespace Joeba.Scripts.Characters
             //Initalize all this components other components
             //boxCollider = entity.addComponent(new BoxCollider());
             mover = entity.addComponent(new Mover());
-            //we add onto our player the component of "Sprite" with animations and we set its first texture
-            animations = entity.addComponent(new Sprite<Animations>(textureSplit[0])); // all the other animations collision are based off this also the starting sprite
+            //we add onto our player the component of "Sprite" with animationsBase and we set its first texture
+            animationsBase = entity.addComponent(new Sprite<AnimationsBase>(BaseTexture[0])); // all the other animationsBase collision are based off this also the starting sprite
+            animationsLegs = entity.addComponent(new Sprite<AnimationsLegs>(BaseTexture[6])); // all the other animationsBase collision are based off this also the starting sprite
+            animationsArms = entity.addComponent(new Sprite<AnimationsArms>(BaseTexture[3])); // all the other animationsBase collision are based off this also the starting sprite
             //heldItem = new WoodenSword();
 
-
-            animations.addAnimation(Animations.WalkNorth, new SpriteAnimation(new List<Subtexture>()
+            //---BASE ANIMATIONS FOR WALKING---\\
+            animationsBase.addAnimation(AnimationsBase.WalkSouth, new SpriteAnimation(new List<Subtexture>()
             {
-               textureSplit[16],
-               textureSplit[17],
-               textureSplit[18]
-            }).setOrigin(new Vector2(8, 28)));
+               BaseTexture[16],
+               BaseTexture[17],
+               BaseTexture[18]
+            }).setOrigin(new Vector2(8, originOffSetY)).setFps(anim_fps));
 
-            animations.addAnimation(Animations.WalkSouth, new SpriteAnimation(new List<Subtexture>()
+            animationsBase.addAnimation(AnimationsBase.WalkNorth, new SpriteAnimation(new List<Subtexture>()
             {
-               textureSplit[0],
-               textureSplit[1],
-               textureSplit[2]
+                BaseTexture[32],
+                BaseTexture[33],
+                BaseTexture[34]
+            }).setOrigin(new Vector2(8, originOffSetY)).setFps(anim_fps));
 
-            }).setOrigin(new Vector2(8, 28)));
-
-            animations.addAnimation(Animations.WalkEast, new SpriteAnimation(new List<Subtexture>()
+            animationsBase.addAnimation(AnimationsBase.WalkEast, new SpriteAnimation(new List<Subtexture>()
             {
-               textureSplit[32],
-               textureSplit[33],
-               textureSplit[34],
-               textureSplit[35],
-               textureSplit[36],
-               textureSplit[37]
-            }).setOrigin(new Vector2(8, 28)));
+                BaseTexture[0],
+                BaseTexture[2],
+                BaseTexture[1],
+                BaseTexture[2],
+                BaseTexture[0],
+                BaseTexture[4],
+                BaseTexture[3],
+                BaseTexture[4]
+            }).setOrigin(new Vector2(8, originOffSetY)).setFps(anim_fps)).setRenderLayer((int)Game1.Layers.PlayerLayer);
 
-            animations.addAnimation(Animations.WalkWest, new SpriteAnimation(new List<Subtexture>()
+            //---LEGS ANIMATIONS FOR WALKING---\\
+            animationsLegs.addAnimation(AnimationsLegs.WalkEast, new SpriteAnimation(new List<Subtexture>()
             {
-               textureSplit[48],
-               textureSplit[49],
-               textureSplit[50],
-               textureSplit[51],
-               textureSplit[52],
-               textureSplit[53]
-            }).setOrigin(new Vector2(8,28))).setRenderLayer((int)Game1.Layers.PlayerLayer);
+                BaseTexture[5],
+                BaseTexture[7],
+                BaseTexture[6],
+                BaseTexture[7],
+                BaseTexture[5],
+                BaseTexture[9],
+                BaseTexture[8],
+                BaseTexture[9]
+            }).setOrigin(new Vector2(8, originOffSetY)).setFps(anim_fps));
+
+
+
+            animationsLegs.addAnimation(AnimationsLegs.WalkNorth, new SpriteAnimation(new List<Subtexture>()
+            {
+                BaseTexture[37],
+                BaseTexture[38],
+                BaseTexture[39]
+            }).setOrigin(new Vector2(8, originOffSetY)).setFps(anim_fps));
+
+            animationsLegs.addAnimation(AnimationsLegs.WalkSouth, new SpriteAnimation(new List<Subtexture>()
+            {
+                BaseTexture[21],
+                BaseTexture[22],
+                BaseTexture[23]
+            }).setOrigin(new Vector2(8, originOffSetY)).setFps(anim_fps)).setRenderLayer((int)Game1.Layers.PlayerLayer);
+
+            //---ARMS ANIMATIONS FOR WALKING---\\
+            animationsArms.addAnimation(AnimationsArms.WalkSouth, new SpriteAnimation(new List<Subtexture>()
+            {
+                BaseTexture[24]
+            }).setOrigin(new Vector2(8, originOffSetY)).setFps(anim_fps));
+
+            animationsArms.addAnimation(AnimationsArms.WalkNorth, new SpriteAnimation(new List<Subtexture>()
+            {
+                BaseTexture[40]
+            }).setOrigin(new Vector2(8, originOffSetY)).setFps(anim_fps));
+
+            animationsArms.addAnimation(AnimationsArms.WalkEast, new SpriteAnimation(new List<Subtexture>()
+            {
+                BaseTexture[11],
+                BaseTexture[11],
+                BaseTexture[12],
+                BaseTexture[11],
+                BaseTexture[11],
+                BaseTexture[12],
+                BaseTexture[12],
+                BaseTexture[12]
+            }).setOrigin(new Vector2(8, originOffSetY)).setFps(anim_fps)).setRenderLayer((int)Game1.Layers.PlayerLayer);
+
 
 
             SetupInput();
-
-
 
             //Inventory Stuff
             inventoryBar = entity.addComponent(new InventoryBar());
@@ -142,9 +200,13 @@ namespace Joeba.Scripts.Characters
 
 
 
-        Animations anim = Animations.WalkSouth;
+        AnimationsBase animBase = AnimationsBase.WalkSouth;
+        AnimationsLegs animLegs = AnimationsLegs.WalkSouth;
+        AnimationsArms animArms = AnimationsArms.WalkSouth;
+
         public void update()
         {
+            
             ChangingInventorySlots();
 
             if (Input.isKeyPressed(Keys.P))
@@ -164,27 +226,71 @@ namespace Joeba.Scripts.Characters
             }
 
             var moveDirection = new Vector2(xAxisInput.value, yAxisInput.value);
-           
 
-            if (moveDirection.X < 0) { anim = Animations.WalkWest; Facing = FacingDirection.West; }
-            else if (moveDirection.X > 0) { anim = Animations.WalkEast; Facing = FacingDirection.East; }
+            //Settings the proper animationsBase for movement
+            if (moveDirection.X < 0)
+            {
+                animationsBase.flipX = true;
+                animationsLegs.flipX = true;
+                animationsArms.flipX = true;
 
-            if (moveDirection.Y < 0) { anim = Animations.WalkNorth; Facing = FacingDirection.North; }
-            else if (moveDirection.Y > 0) { anim = Animations.WalkSouth; Facing = FacingDirection.South; }
+                animBase = AnimationsBase.WalkEast; Facing = FacingDirection.West;
+                animLegs = AnimationsLegs.WalkEast;
+                animArms = AnimationsArms.WalkEast;
+
+
+
+            }
+            else if (moveDirection.X > 0)
+            {
+                animationsBase.flipX = false;
+                animationsLegs.flipX = false;
+                animationsArms.flipX = false;
+
+                animBase = AnimationsBase.WalkEast; Facing = FacingDirection.East;
+                animLegs = AnimationsLegs.WalkEast;
+                animArms = AnimationsArms.WalkEast;
+            }
+
+            if (moveDirection.Y < 0)
+            {
+                animBase = AnimationsBase.WalkNorth; Facing = FacingDirection.North;
+                animArms = AnimationsArms.WalkNorth;
+                animLegs = AnimationsLegs.WalkNorth;
+            }
+            else if (moveDirection.Y > 0)
+            {
+                animBase = AnimationsBase.WalkSouth; Facing = FacingDirection.South;
+                animLegs = AnimationsLegs.WalkSouth;
+                animArms = AnimationsArms.WalkSouth;
+
+            }
 
 
 
             if (moveDirection != Vector2.Zero)
             {
-                animations.setLayerDepth(1 - (entity.position.Y / 100000));
+                animationsBase.setLayerDepth(1 - (entity.position.Y / 100000));
+                animationsArms.setLayerDepth(1 - (entity.position.Y / 100000));
+                animationsLegs.setLayerDepth(1 - (entity.position.Y / 100000));
 
-                if (!animations.isAnimationPlaying(anim))
-                    animations.play(anim);
+                if (!animationsBase.isAnimationPlaying(animBase))
+                {
+                    animationsBase.play(animBase);
+                    animationsLegs.play(animLegs);
+                    animationsArms.play(animArms);
+
+                }
 
                 CollisionResult res;
                 mover.move(moveDirection * move_speed * Time.deltaTime, out res);
             }
-            else { animations.play(anim); animations.stop(); }
+            else
+            {
+                animationsBase.play(animBase); animationsBase.stop();
+                animationsLegs.play(animLegs); animationsLegs.stop();
+                animationsArms.play(animArms); animationsArms.stop();
+            }
 
             if (Input.leftMouseButtonPressed)
             {

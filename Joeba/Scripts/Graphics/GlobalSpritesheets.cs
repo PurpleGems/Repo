@@ -18,7 +18,7 @@ namespace Joeba.Scripts.Graphics
         public static List<Subtexture> WeaponsSplit = Subtexture.subtexturesFromAtlas(Weapons, 16, 16);
         public static List<Subtexture> CropsSplit = Subtexture.subtexturesFromAtlas(Crops, 16, 32);
         public static List<Subtexture> HoedDirtSplit = Subtexture.subtexturesFromAtlas(HoedDirt, 16, 16);
-        public static List<Subtexture> BaseCharacterSplit = Subtexture.subtexturesFromAtlas(BaseCharacter, 16, 16);
+        public static List<Subtexture> BaseCharacterSplit = Subtexture.subtexturesFromAtlas(BaseCharacter, 16, 32);
         
     }
 }
